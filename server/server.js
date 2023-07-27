@@ -23,7 +23,7 @@ let jokes = [
     punchLine: "A meowntain!"
   },
   {
-    whoseJoke: "dEv",
+    whoseJoke: "Dev",
     jokeQuestion: "Why should you not play cards in the forest?",
     punchLine: "Too many Cheetahs!"
   },
@@ -37,26 +37,26 @@ let jokes = [
 // serve back static files
 app.use(express.static('server/public'));
 
-let joke =[]
+
 app.get('/joke', (req,res) =>{
-  console.log('inside the GET', joke);
-  res.send(joke);
+  // console.log('inside the GET', jokes);
+  res.send(jokes);
 })
 
 app.post('/joke', (req,res) => {
-  console.log('inside the POST');
+  // console.log('inside the POST');
    const whoseJoke = req.body.whoseJoke;
    const jokeQuestion = req.body.jokeQuestion;
    const punchLine = req.body.punchLine;
 
-  let jokes ={
+  let newJokes ={
     whoseJoke: whoseJoke,
     jokeQuestion:jokeQuestion,
     punchLine: punchLine
   };
   
-  joke.push(jokes);
-  console.log("the POST jokes are:", joke);
+  jokes.push(newJokes);
+  // console.log("the POST jokes are:", newJokes);
   res.sendStatus(201);
 })
 

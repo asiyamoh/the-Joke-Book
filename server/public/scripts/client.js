@@ -12,11 +12,11 @@ function onReady() {
 }
 
 function addJoke(){
-    console.log('inside the addJoke');
+    // console.log('inside the addJoke');
     let whoseJoke = $('#whoseJokeIn').val();
     let jokeQuestion = $('#questionIn').val();
     let punchLine = $('#punchlineIn').val();
-    console.log("hey addJoke",whoseJoke,jokeQuestion,punchLine);
+    // console.log("hey addJoke",whoseJoke,jokeQuestion,punchLine);
 
     let jokes = {
         whoseJoke,
@@ -31,7 +31,6 @@ function addJoke(){
     }).then((response) => {
         console.log('Hey POST');
         getJokes()
-        render(response)
     }).catch((error) => {
         alert("Error with the POST", error);
     })
@@ -45,6 +44,7 @@ function getJokes(){
         url:'/joke'
     }).then((response) => {
         console.log('inside the getJoke', response);
+        render(response);
     }).catch((error) => {
         alert('Error with GET request /joke', error);
     })
@@ -55,7 +55,7 @@ function render(jokes){
     $('#outputDiv').empty();
     
     for(let joke of jokes){
-        console.log("inside the for loop");
+        // console.log("inside the for loop");
         $('#outputDiv').append(`
         <p>By: ${joke.whoseJoke} 
             Question: ${joke.jokeQuestion} 
